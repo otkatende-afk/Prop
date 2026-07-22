@@ -1,1 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEX Capital - Prop Trading Firm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', system-ui, sans-serif; }
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat;
+        }
+        .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); }
+        .nav-link { position: relative; }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #22c55e;
+            transition: all 0.3s;
+        }
+        .nav-link:hover:after { width: 100%; }
+    </style>
+</head>
+<body class="bg-zinc-950 text-white">
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full bg-zinc-950/80 backdrop-blur-lg border-b border-zinc-800 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 bg-emerald-500 rounded-xl flex items-center justify-center text-2xl font-bold">A</div>
+                <div>
+                    <span class="text-2xl font-bold tracking-tight">APEX</span>
+                    <span class="text-emerald-400 font-semibold">CAPITAL</span>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#programs" class="nav-link">Programs</a>
+                <a href="#how" class="nav-link">How it Works</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <button onclick="showLoginModal()" 
+                        class="px-6 py-2.5 text-sm font-semibold border border-zinc-700 hover:border-zinc-400 rounded-2xl transition">
+                    Login
+                </button>
+                <button onclick="showSignupModal()" 
+                        class="bg-emerald-500 hover:bg-emerald-600 px-6 py-2.5 text-sm font-semibold rounded-2xl transition">
+                    Get Funded
+                </button>
+            </div>
+        </div>
+    </nav>
 
+    <!-- Hero -->
+    <section class="hero-bg min-h-screen flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-3xl text-sm border border-white/20">
+                    <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+                    95%+ payout success rate
+                </div>
+                
+                <h1 class="text-6xl md:text-7xl font-bold leading-none tracking-tighter">
+                    Trade with<br> 
+                    <span class="text-emerald-400">our capital.</span><br>
+                    Keep up to 90%.
+                </h1>
+                
+                <p class="text-xl text-zinc-400 max-w-md">
+                    Pass our challenge. Get funded up to $500,000. 
+                    Trade forex, indices, commodities &amp; crypto with professional conditions.
+                </p>
+                
+                <div class="flex items-center gap-4">
+                    <button onclick="showSignupModal()" 
+                            class="bg-emerald-500 hover:bg-emerald-600 text-lg px-10 py-4 rounded-3xl font-semibold flex items-center gap-3">
+                        Start Free Trial
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button onclick="document.getElementById('programs').scrollIntoView({behavior:'smooth'})" 
+                            class="border border-white/30 hover:bg-white/10 px-8 py-4 rounded-3xl font-medium text-lg">
+                        View Programs
+                    </button>
+                </div>
+                
+                <div class="flex items-center gap-8 pt-4">
+                    <div>
+                        <div class="text-emerald-400 text-3xl font-semibold">$2.4M</div>
+                        <div class="text-zinc-400 text-sm">Paid out this month</div>
+                    </div>
+                    <div>
+                        <div class="text-emerald-400 text-3xl font-semibold">12,459</div>
+                        <div class="text-zinc-400 text-sm">Funded traders</div>
+                    </div>
+                    <div>
+                        <div class="text-emerald-400 text-3xl font-semibold">4.8/5</div>
+                        <div class="text-zinc-400 text-sm">Trader rating</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hidden md:block">
+                <div class="bg-zinc-900/70 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl">
+                    <div class="bg-black rounded-2xl p-6 mb-6">
+                        <div class="flex justify-between mb-8">
+                            <div>
+                                <div class="text-emerald-400 text-sm">Account Balance</div>
+                                <div class="text-4xl font-mono font-semibold">$248,392.45</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-emerald-400 text-sm">Profit Share</div>
+                                <div class="text-4xl font-semibold text-emerald-400">87%</div>
+                            </div>
+                        </div>
+                        <div class="h-2 bg-zinc-800 rounded-full overflow-hidden">
+                            <div class="h-2 w-[87%] bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-3 gap-4 text-center text-sm">
+                        <div class="bg-zinc-800/50 rounded-2xl p-4">
+                            <div class="text-emerald-400">+2.84%</div>
+                            <div class="text-xs text-zinc-400">Today</div>
+                        </div>
+                        <div class="bg-zinc-800/50 rounded-2xl p-4">
+                            <div class="text-emerald-400">+18.4%</div>
+                            <div class="text-xs text-zinc-400">This week</div>
+                        </div>
+                        <div class="bg-zinc-800/50 rounded-2xl p-4">
+                            <div class="text-emerald-400">+67%</div>
+                            <div class="text-xs text-zinc-400">This month</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <div class="bg-zinc-900 py-6 border-b border-t border-zinc-800">
+        <div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-center items-center gap-x-12 gap-y-6 opacity-75">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Meta_Platforms_Inc._logo_%28square%29.svg/512px-Meta_Platforms_Inc._logo_%28square%29.svg.png" class="h-6" alt="Meta">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/512px-Amazon_logo.svg.png" class="h-6" alt="Amazon">
+            <div class="text-xl font-semibold tracking-widest">FXCM</div>
+            <div class="text-xl font-semibold tracking-widest">IG</div>
+            <div class="text-xl font-semibold">ThinkMarkets</div>
+        </div>
+    </div>
+
+    <!-- Programs -->
+    <section id="programs" class="py-24 bg-zinc-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 bg-emerald-900/30 text-emerald-400 px-5 py-2 rounded-3xl text-sm mb-4">
+                    <i class="fas fa-trophy"></i> PROVEN MODELS
+                </div>
+                <h2 class="text-5xl font-bold tracking-tight">Choose your funding path</h2>
+                <p class="mt-4 text-zinc-400 max-w-md mx-auto">Two flexible challenges. One goal: get funded fast.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- 1-Phase -->
+                <div class="bg-zinc-900 border border-zinc-700 rounded-3xl p-8 card-hover relative overflow-hidden">
+                    <div class="absolute top-6 right-6 bg-emerald-500 text-xs font-bold px-4 py-1 rounded-2xl">FASTEST</div>
+                    <h3 class="text-3xl font-bold mb-2">1-Phase Challenge</h3>
+                    <div class="text-emerald-400 text-5xl font-mono mb-6">$10K — $500K</div>
+                    
+                    <ul class="space-y-4 mb-10">
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-emerald-400 mt-1"></i> 8% profit target</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-emerald-400 mt-1"></i> 5% daily drawdown</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-emerald-400 mt-1"></i> 10% max drawdown</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-emerald-400 mt-1"></i> Unlimited trading days</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-emerald-400 mt-1"></i> 90/10 profit split</li>
+                    </ul>
+                    
+                    <button onclick="alert('Redirecting to checkout... (demo)')" 
+                            class="w-full bg-white text-black font-semibold py-4 rounded-2xl hover:bg-emerald-400 transition">
+                        Start for $149
+                    </button>
+                    <p class="text-center text-xs text-zinc-400 mt-4">One-time fee • Instant access</p>
+                </div>
+                
+                <!-- 2-Phase -->
+                <div class="bg-zinc-900 border border-zinc-700 rounded-3xl p-8 card-hover">
+                    <h3 class="text-3xl font-bold mb-2">2-Phase Challenge</h3>
+                    <div class="text-emerald-400 text-5xl font-mono mb-6">$10K — $500K</div>
+                    
+                    <ul class="space-y-4 mb-10">
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-emerald-400 mt-1"></i> Phase 1: 10% target</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-emerald-400 mt-1"></i> Phase 2: 5% target</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-emerald-400 mt-1"></i> 4% daily / 8% max DD</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-emerald-400 mt-1"></i> Bi-weekly payouts</li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check text-emerald-400 mt-1"></i> Scaling plan up to 2M</li>
+                    </ul>
+                    
+                    <button onclick="alert('Redirecting to checkout... (demo)')" 
+                            class="w-full bg-white/10 hover:bg-white/20 border border-white/30 font-semibold py-4 rounded-2xl transition">
+                        Start for $89
+                    </button>
+                    <p class="text-center text-xs text-zinc-400 mt-4">Most popular</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works -->
+    <section id="how" class="py-24 bg-zinc-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold">3 Simple Steps to Funding</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center text-3xl mb-6">1</div>
+                    <h4 class="text-2xl font-semibold mb-3">Choose &amp; Pay</h4>
+                    <p class="text-zinc-400">Select your account size and complete the one-time challenge fee.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center text-3xl mb-6">2</div>
+                    <h4 class="text-2xl font-semibold mb-3">Pass the Rules</h4>
+                    <p class="text-zinc-400">Trade responsibly within our risk parameters. No time pressure.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center text-3xl mb-6">3</div>
+                    <h4 class="text-2xl font-semibold mb-3">Get Funded</h4>
+                    <p class="text-zinc-400">Receive your funded account and start earning real payouts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-24 bg-zinc-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12">Real traders. Real results.</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-zinc-900 p-8 rounded-3xl">
+                    <div class="flex gap-1 text-amber-400 mb-6">
+                        ★★★★☆
+                    </div>
+                    <p class="italic">"Passed the 1-phase in 9 days. Already received my first $4,800 payout. The best prop firm I've tried."</p>
+                    <div class="mt-8 flex items-center gap-3">
+                        <div class="w-10 h-10 bg-zinc-700 rounded-full"></div>
+                        <div>
+                            <div>Michael Torres</div>
+                            <div class="text-xs text-zinc-400">Funded $100K • Forex</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-zinc-900 p-8 rounded-3xl">
+                    <div class="flex gap-1 text-amber-400 mb-6">
+                        ★★★★★
+                    </div>
+                    <p class="italic">"The rules are fair and the support is actually helpful. Scaled from 50k to 200k in under 3 months."</p>
+                    <div class="mt-8 flex items-center gap-3">
+                        <div class="w-10 h-10 bg-zinc-700 rounded-full"></div>
+                        <div>
+                            <div>Sarah Chen</div>
+                            <div class="text-xs text-zinc-400">Funded $200K • Indices</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-zinc-900 p-8 rounded-3xl">
+                    <div class="flex gap-1 text-amber-400 mb-6">
+                        ★★★★☆
+                    </div>
+                    <p class="italic">"Finally a firm that doesn't reset your account for tiny violations. Consistent payouts every 14 days."</p>
+                    <div class="mt-8 flex items-center gap-3">
+                        <div class="w-10 h-10 bg-zinc-700 rounded-full"></div>
+                        <div>
+                            <div>Ahmed Khan</div>
+                            <div class="text-xs text-zinc-400">Funded $50K • Crypto</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-24 bg-zinc-900">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-5xl font-bold text-center mb-16">Frequently Asked Questions</h2>
+            
+            <div class="space-y-6">
+                **Summary:**
+
+                        <span class="text-lg font-medium">What markets can I trade?</span>
+                        <span class="text-2xl group-open:rotate-45 transition">＋</span>
+                    
+                    <p class="text-zinc-400 mt-6">Forex majors &amp; minors, major indices, commodities (gold, oil, etc), and top cryptocurrencies.</p>
+                
+                **Summary:**
+
+                        <span class="text-lg font-medium">Do you offer refunds?</span>
+                        <span class="text-2xl group-open:rotate-45 transition">＋</span>
+                    
+                    <p class="text-zinc-400 mt-6">We offer a 7-day money-back guarantee if you haven't attempted any trades yet.</p>
+                
+                **Summary:**
+
+                        <span class="text-lg font-medium">How long does payout processing take?</span>
+                        <span class="text-2xl group-open:rotate-45 transition">＋</span>
+                    
+                    <p class="text-zinc-400 mt-6">Payouts are processed within 24-48 hours via bank transfer, crypto, or Rise.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-28 bg-gradient-to-b from-zinc-900 to-black">
+        <div class="max-w-2xl mx-auto text-center px-6">
+            <h2 class="text-5xl font-bold mb-6">Ready to trade with serious capital?</h2>
+            <p class="text-xl text-zinc-400 mb-10">Join thousands of traders who are already profiting with APEX Capital.</p>
+            <button onclick="showSignupModal()" 
+                    class="bg-emerald-500 hover:bg-emerald-600 text-2xl px-16 py-6 rounded-3xl font-semibold inline-flex items-center gap-4">
+                Start Your Challenge Today
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <p class="text-sm text-zinc-500 mt-8">No credit card required for demo account</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-20 border-t border-zinc-900">
+        <div class="max-w-7xl mx-auto px-6 text-zinc-400">
+            <div class="flex flex-col md:flex-row justify-between gap-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-8 h-8 bg-emerald-500 rounded-2xl flex items-center justify-center text-xl font-bold">A</div>
+                        <span class="text-3xl font-bold text-white">APEX CAPITAL</span>
+                    </div>
+                    <p class="max-w-xs">Professional proprietary trading firm empowering retail traders worldwide.</p>
+                </div>
+                
+                <div class="grid grid-cols-3 gap-12">
+                    <div>
+                        <div class="font-semibold text-white mb-4">Company</div>
+                        <div class="space-y-2 text-sm">
+                            <div>About Us</div>
+                            <div>Careers</div>
+                            <div>Contact</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-white mb-4">Legal</div>
+                        <div class="space-y-2 text-sm">
+                            <div>Terms</div>
+                            <div>Privacy</div>
+                            <div>Disclaimers</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-white mb-4">Community</div>
+                        <div class="space-y-2 text-sm">
+                            <div>Discord</div>
+                            <div>Instagram</div>
+                            <div>Twitter</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center text-xs mt-20 opacity-60">
+                © 2026 APEX Capital. This is a demo website for illustration purposes only.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[100]">
+        <div class="bg-zinc-900 rounded-3xl w-full max-w-md p-10">
+            <h3 class="text-2xl font-bold mb-8">Welcome back</h3>
+            <input type="email" id="email" placeholder="Email" 
+                   class="w-full bg-zinc-800 border border-zinc-700 focus:border-emerald-500 rounded-2xl px-6 py-4 mb-4 outline-none">
+            <input type="password" placeholder="Password" 
+                   class="w-full bg-zinc-800 border border-zinc-700 focus:border-emerald-500 rounded-2xl px-6 py-4 mb-8 outline-none">
+            
+            <button onclick="fakeLogin()" 
+                    class="w-full bg-white text-black py-4 rounded-2xl font-semibold">Login</button>
+            
+            <div onclick="hideModals()" class="text-center mt-6 text-zinc-400 cursor-pointer hover:text-white">Close</div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[100]">
+        <div class="bg-zinc-900 rounded-3xl w-full max-w-md p-10">
+            <h3 class="text-3xl font-bold mb-2">Get Funded Today</h3>
+            <p class="text-zinc-400 mb-8">Start with our free demo or choose a challenge.</p>
+            
+            <div class="space-y-4">
+                <button onclick="alert('Demo account activated! (This is a static demo)')" 
+                        class="w-full border border-emerald-500 text-emerald-400 hover:bg-emerald-500/10 py-6 rounded-3xl font-medium">
+                    Try Demo Account
+                </button>
+                <button onclick="alert('Redirecting to payment... (demo)')" 
+                        class="w-full bg-emerald-500 py-6 rounded-3xl font-semibold text-black">
+                    Buy Challenge ($89 — $499)
+                </button>
+            </div>
+            
+            <div onclick="hideModals()" class="text-center mt-8 text-zinc-400 cursor-pointer hover:text-white">Cancel</div>
+        </div>
+    </div>
+
+    <script>
+        function showLoginModal() {
+            hideModals();
+            document.getElementById('loginModal').classList.remove('hidden');
+        }
+        
+        function showSignupModal() {
+            hideModals();
+            document.getElementById('signupModal').classList.remove('hidden');
+        }
+        
+        function hideModals() {
+            document.getElementById('loginModal').classList.add('hidden');
+            document.getElementById('signupModal').classList.add('hidden');
+        }
+        
+        function fakeLogin() {
+            alert("Login successful! (Demo only)");
+            hideModals();
+        }
+        
+        // Tailwind script already loaded via CDN
+        console.log("%cAPEX Capital Demo Website Ready 🚀\nSingle-file static prop firm site", "color:#22c55e; font-family:monospace");
+        
+        // Keyboard escape support
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") hideModals();
+        });
+    </script>
+</body>
+  </html>
